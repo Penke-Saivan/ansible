@@ -1,0 +1,21 @@
+- name: "Satya"
+  dob: "01-01-01"
+  age: 10
+  adderesses:
+  #Objects
+  - doorno: 4-32
+    street: "Hello World"
+    city: ooru
+    pin: 532788
+
+  - doorno: 776
+    street: khdfs
+    city: sjkf
+    pin: sfsf
+  skills:
+  - java
+    devosp
+    cloud  
+
+
+ 
