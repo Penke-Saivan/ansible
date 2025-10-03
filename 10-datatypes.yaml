@@ -1,0 +1,20 @@
+---
+- name: Data-types in ansible
+  hosts: local
+  connection: local
+  vars:
+    COURSE: Ansible-Scrippting
+    Duration: 120 
+    is_it_live: true
+    tools:
+    - linux
+    - shell
+    - ansible
+    concepts:
+      cloud: aws
+      current: ansible
+
+  tasks:
+  - name: Print course info
+    ansible.builtin.debug:
+      msg: "Course name: {{ Course }}, Duration: {{ Duration }}, is it live?: {{ is_live }}, tools are: {{ tools }} concepts are: {{ concepts }}"   

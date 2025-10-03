@@ -6,3 +6,14 @@
   - name: print args  
     ansible.builtin.debug:
       msg: "Argument-1 is {{Argument1}} and Argument-2 is {{Argument2}}"
+
+# ansible-playbook -i inventory.ini -e ansible_user=ec2-user -e  ansible_password=DevOps321 -e "Argument1=TestingArg1" -e "Argument2=TestArg2" 09-vars-args.yaml      
+
+# preference
+
+# 1. args or command line
+# 2. from task
+# 3. files
+# 4. prompt
+# 5. play level
+# 6. inventory
