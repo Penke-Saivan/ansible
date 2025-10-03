@@ -2,6 +2,7 @@
 - name: loops
   hosts: local
   connection: local
+  become: yes
   tasks:
   - name: Print names through loops 
     ansible.builtin.dnf:
