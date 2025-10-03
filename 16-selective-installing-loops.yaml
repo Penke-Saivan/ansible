@@ -1,0 +1,14 @@
+---
+- name: loops
+  hosts: local
+  connection: local
+  become: yes
+  tasks:
+  - name: Print names through loops -selective installing
+    ansible.builtin.dnf:
+      name: "{{item.name}}"
+      state: "{{item.state}}"
+    loop:
+    - { name: "nginx", state: "absent" }
+    - { name: "mysql", state: "latest" }
+    - { name: "zip", state: "absent" }
