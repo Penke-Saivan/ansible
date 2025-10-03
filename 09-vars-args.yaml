@@ -1,0 +1,8 @@
+---
+- name: passing args in command
+  hosts: local
+  connection: local
+  tasks:
+  - name: print args  
+    ansible.builtin.debug:
+      msg: "Argument-1 is {{Argument1}} and Argument-2 is {{Argument2}}"
