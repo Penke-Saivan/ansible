@@ -10,4 +10,14 @@
     - User1
     - User2
     - User3
-       
+
+# ok: [localhost] => (item=User1) => {
+#     "msg": "Hello from User1"
+# }
+# ok: [localhost] => (item=User2) => {
+#     "msg": "Hello from User2"
+# }
+# ok: [localhost] => (item=User3) => {
+#     "msg": "Hello from User3"
+# }
+

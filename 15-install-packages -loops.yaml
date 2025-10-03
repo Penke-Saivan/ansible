@@ -1,0 +1,13 @@
+---
+- name: loops
+  hosts: local
+  connection: local
+  tasks:
+  - name: Print names through loops 
+    ansible.builtin.dnf:
+      name: "{{item}}"
+      state: latest
+    loop:
+    - nginx
+    - mysql
+    - zip
