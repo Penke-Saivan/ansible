@@ -17,4 +17,6 @@
   tasks:
   - name: Print course info
     ansible.builtin.debug:
-      msg: "Course name: {{ COURSE }}, Duration: {{ Duration }}, is it live?: {{ is_it_live }}, tools are: {{ tools }} concepts are: {{ concepts }}"   
+      msg: "Course name: {{ COURSE }}, Duration: {{ Duration }}, is it live?: {{ is_it_live }}, tools are: {{ tools }} concepts are: {{ concepts }}" 
+
+#  "msg": "Course name: Ansible-Scrippting, Duration: 120, is it live?: True, tools are: ['linux', 'shell', 'ansible'] concepts are: {'cloud': 'aws', 'current': 'ansible'}"
