@@ -7,9 +7,14 @@
     technologies: DevOps, Linux, Shell, Ansible
     technologies_hyphen: DevOps - Linux - Shell - Ansible
     test1: test1
+    # tags:
+    #   Application: payment
+    #   Environment: dev
     tags:
-      Application: payment
-      Environment: dev
+    - key: Application
+      value: payment
+    - key: Environment
+      value: dev  
   tasks:
   - name: default variable when value is not provided
     ansible.builtin.debug:
@@ -47,3 +52,9 @@
   - name: convert dictionary / map to lists 
     ansible.builtin.debug:
       msg: "Tags are: {{ tags | dict2items }}"
+
+# "msg": "Tags are: [{'key': 'Application', 'value': 'payment'}, {'key': 'Environment', 'value': 'dev'}]"
+
+  - name: convert lists to dicts 
+    ansible.builtin.debug:
+      msg: "tag map: {{ listTags | items2dict }}"
