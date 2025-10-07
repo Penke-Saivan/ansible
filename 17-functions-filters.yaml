@@ -5,7 +5,7 @@
   vars:
     placeholder: holder
     technologies: DevOps, Linux, Shell, Ansible
-    technologies-hyphen: DevOps - Linux - Shell - Ansible
+    technologies_hyphen: DevOps - Linux - Shell - Ansible
     test1: test1
   tasks:
   - name: default variable when value is not provided
@@ -38,3 +38,5 @@
   - name: convert string to lists - hyphen separated
     ansible.builtin.debug:
       msg: "Technologies are: {{ technologies-hyphen | split('-') }}"
+
+# ERROR! Invalid variable name in vars specified for Play: 'technologies-hyphen' is not a valid variable name
