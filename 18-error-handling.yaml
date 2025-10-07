@@ -6,8 +6,15 @@
   tasks:
   - name: Check user exist or not
     ansible.builtin.command: id roboshop
-    register:  user-output
+    register:  user_output
 
   - name: Print the output
     ansible.builtin.debug: 
-      msg: "{{ user-output }}"
+      msg: "{{ user_output }}"
+
+# "msg": "Invalid variable name in 'register' specified: 'user-output'"}
+# ERROR! Invalid variable name in 'register' specified: 'user-output'
+
+  # - name: Print the output
+  #   ansible.builtin.debug: 
+  #     msg: "{{ user_output }}"
