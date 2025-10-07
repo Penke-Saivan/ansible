@@ -28,7 +28,7 @@
 
   - name: convert string to lists 
     ansible.builtin.debug:
-      msg: "Technologies are: {{ name | split(',') }}"
+      msg: "Technologies are: {{ technologies | split(',') }}"
 
 #  For example, if you want to split a string variable fruits by commas, you can use:
 
