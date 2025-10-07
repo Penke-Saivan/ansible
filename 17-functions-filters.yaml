@@ -108,11 +108,11 @@
 
   - name: convert uppercase
     ansible.builtin.debug:
-      msg: "{{ name | upper }}"
+      msg: "{{ name | default('dbskdb') | upper }}"
 
   - name: convert lowercase
     ansible.builtin.debug:
-      msg: "{{ gmail | lower }}"
+      msg: "{{ gmail | default('Test@tTTest.com') | lower }}"
 
   - name: check IP is valid or not
     ansible.builtin.debug: 
