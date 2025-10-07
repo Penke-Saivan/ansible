@@ -4,6 +4,7 @@
   connection: local
   vars:
     placeholder: holder
+    technologies: DevOps, Linux, Shell, Ansible
     test1: test1
   tasks:
   - name: default variable when value is not provided
@@ -24,3 +25,11 @@
   - name: default variable 
     ansible.builtin.debug:
       msg: "Hello, {{ name | default('Satya') }}"
+
+  - name: convert string to lists 
+    ansible.builtin.debug:
+      msg: "Technologies are: {{ name | split(',') }}"
+
+#  For example, if you want to split a string variable fruits by commas, you can use:
+
+# {{ fruits | split(',') }}
