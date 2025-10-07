@@ -87,7 +87,7 @@
 
   - name: save student_yaml
     ansible.builtin.copy:
-      content:  student_yaml 
+      content: "{{student_yaml}}" 
       dest: ./student-yaml
     ignore_errors: true  
 
