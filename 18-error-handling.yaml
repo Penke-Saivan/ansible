@@ -19,3 +19,44 @@
   - name: Create the user if rc is not 0 
     ansible.builtin.command: useradd roboshop
     when : user_output.rc != 0
+#----rc!=0----
+# {
+#         "changed": true,
+#         "cmd": [
+#             "id",
+#             "roboshop"
+#         ],
+#         "delta": "0:00:00.006803",
+#         "end": "2025-10-07 10:17:17.869909",
+#         "failed": true,
+#         "msg": "non-zero return code",
+#         "rc": 1,
+#         "start": "2025-10-07 10:17:17.863106",
+#         "stderr": "id: ‘roboshop’: no such user",
+#         "stderr_lines": [
+#             "id: ‘roboshop’: no such user"
+#         ],
+#         "stdout": "",
+#         "stdout_lines": []
+#     }
+
+#----rc=0----
+# {
+#         "changed": true,
+#         "cmd": [
+#             "id",
+#             "roboshop"
+#         ],
+#         "delta": "0:00:00.006520",
+#         "end": "2025-10-07 10:17:33.037170",
+#         "failed": false,
+#         "msg": "",
+#         "rc": 0,
+#         "start": "2025-10-07 10:17:33.030650",
+#         "stderr": "",
+#         "stderr_lines": [],
+#         "stdout": "uid=1002(roboshop) gid=1002(roboshop) groups=1002(roboshop)",
+#         "stdout_lines": [
+#             "uid=1002(roboshop) gid=1002(roboshop) groups=1002(roboshop)"
+#         ]
+#     }
