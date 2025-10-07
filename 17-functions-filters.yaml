@@ -52,6 +52,7 @@
   - name: convert dictionary / map to lists 
     ansible.builtin.debug:
       msg: "Tags are: {{ tags | dict2items }}"
+    ignore_errors: true  
 
 # "msg": "Tags are: [{'key': 'Application', 'value': 'payment'}, {'key': 'Environment', 'value': 'dev'}]"
 
