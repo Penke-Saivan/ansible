@@ -91,13 +91,29 @@
       dest: ./student-yaml
     ignore_errors: true  
 
+# [{"name": "Name reddy m", "dob": "01-01-01", "age": 21, "addresses": [{"doorNo": "4-32", "street": "gandhi nagar", "city": "hyderabd", "pin": 534565, "type": "current"}, {"doorNo": "4-32", "street": "gandhi nagar", "city": "hyderabd", "pin": 534565, "type": "perm"}], "skills": ["java", "devops", "cloud"]}, {"name": "ramesh", "dob": "01-01-01", "age": 21, "addresses": [{"doorNo": "4-32", "street": "gandhi nagar", "city": "hyderabd", "pin": 534565, "type": "current"}, {"doorNo": "4-32", "street": "gandhi nagar", "city": "hyderabd", "pin": 534565, "type": "perm"}], "skills": ["java", "devops", "cloud"]}]
+
 
   - name: save json to file by copying
     ansible.builtin.copy:
       content:  "{{ student_yaml | to_json  }}" 
       dest: ./student-data.json
+# [{"name": "Name reddy m", "dob": "01-01-01", "age": 21, "addresses": [{"doorNo": "4-32", "street": "gandhi nagar", "city": "hyderabd", "pin": 534565, "type": "current"}, {"doorNo": "4-32", "street": "gandhi nagar", "city": "hyderabd", "pin": 534565, "type": "perm"}], "skills": ["java", "devops", "cloud"]}, {"name": "ramesh", "dob": "01-01-01", "age": 21, "addresses": [{"doorNo": "4-32", "street": "gandhi nagar", "city": "hyderabd", "pin": 534565, "type": "current"}, {"doorNo": "4-32", "street": "gandhi nagar", "city": "hyderabd", "pin": 534565, "type": "perm"}], "skills": ["java", "devops", "cloud"]}]
+
 
   - name: save json to file by copying-nice json
     ansible.builtin.copy:
       content:  "{{ student_yaml | to_nice_json  }}" 
       dest: ./nice-student-data.json
+
+  - name: convert uppercase
+    ansible.builtin.debug:
+      msg: "{{ name | upper }}"
+
+  - name: convert lowercase
+    ansible.builtin.debug:
+      msg: "{{ gmail | lower }}"
+
+  - name: check IP is valid or not
+    ansible.builtin.debug: 
+      msg: "{{ ipaddress | ansible.utils.ipv4 }}"
