@@ -7,6 +7,7 @@
   - name: Check user exist or not
     ansible.builtin.command: id roboshop
     register:  user_output
+    ignore_errors: true
 
   - name: Print the output
     ansible.builtin.debug: 
@@ -15,6 +16,6 @@
 # "msg": "Invalid variable name in 'register' specified: 'user-output'"}
 # ERROR! Invalid variable name in 'register' specified: 'user-output'
 
-  # - name: Print the output
-  #   ansible.builtin.debug: 
-  #     msg: "{{ user_output }}"
+  - name: Create the user if rc is not 0 
+    ansible.builtin.command: useradd roboshop
+    when : user_output.rc != 0
