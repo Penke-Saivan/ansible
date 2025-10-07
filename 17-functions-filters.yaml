@@ -1,0 +1,11 @@
+---
+- name: functions or filters
+  hosts: local
+  connection: local
+  vars:
+    placeholder: holder
+    test1: test1
+  tasks:
+  - name: default variable when value is not provided
+    ansible.builtin.debug:
+      msg: "Hello, {{ name }}"    
