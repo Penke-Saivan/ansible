@@ -118,3 +118,46 @@
     ansible.builtin.debug: 
       msg: "{{ ipaddress | default('423.123.123.123') | ansible.utils.ipv4 }}"
 # "msg": false
+
+# ------------------shell vs command module in ansible--------------------
+
+# The shell and command modules in Ansible both execute commands on target hosts, but they differ in how they interact with the shell environment and handle shell-specific features. 
+# command module: 
+
+# • Direct execution: Executes commands directly on the target system without invoking a shell. This means it does not interpret shell-specific features like pipes (|), redirection (&gt;, &gt;&gt;), or logical operators (&&, ||). 
+# • Security: Generally considered more secure as it reduces the risk of command injection, as shell metacharacters are not interpreted. 
+# • Simplicity: Best suited for simple, straightforward commands or when executing binaries that don't require shell features. [1]  
+
+# shell module: 
+
+# • Shell environment: Executes commands within a shell environment (typically /bin/sh by default, but configurable). This allows the use of shell-specific features. 
+# • Flexibility: Provides more flexibility for complex commands involving pipes, redirection, environment variables, or execution of shell scripts. 
+# • Security considerations: Requires careful handling, especially when using variables, as it is susceptible to command injection if input is not properly sanitized. 
+
+# Key Differences Summarized: 
+
+# | Feature | command module | shell module  |
+# | --- | --- | --- |
+# | Shell features | Does not interpret shell features (pipes, etc.) | Interprets shell features (pipes, redirection, etc.)  |
+# | Security | More secure; | Less secure;  |
+# | Complexity | Best for simple commands and binaries | Best for complex commands and shell scripts  |
+
+# When to use which: 
+
+# • Use command 
+
+# when you need to execute a simple, self-contained command without needing any shell-specific functionalities. 
+
+# • Use shell 
+
+# when you need to leverage shell features like piping, redirection, or chaining commands, or when executing shell scripts. If using variables with shell, ensure they are properly sanitized or quoted to prevent injection. 
+
+
+
+  - name: grep for root
+    ansible.builtin.command: cat /etc/passwd | grep root
+    register: command_output
+
+  - name: display command_output
+    ansible.builtin.debug:
+      msg: "{{ command_output }}"
