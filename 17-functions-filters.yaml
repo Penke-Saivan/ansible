@@ -7,10 +7,10 @@
     technologies: DevOps, Linux, Shell, Ansible
     technologies_hyphen: DevOps - Linux - Shell - Ansible
     test1: test1
-    # tags:
-    #   Application: payment
-    #   Environment: dev
     tags:
+      Application: payment
+      Environment: dev
+    listTags:
     - key: Application
       value: payment
     - key: Environment
@@ -52,7 +52,7 @@
   - name: convert dictionary / map to lists 
     ansible.builtin.debug:
       msg: "Tags are: {{ tags | dict2items }}"
-    ignore_errors: true  
+    # ignore_errors: true  
 
 # "msg": "Tags are: [{'key': 'Application', 'value': 'payment'}, {'key': 'Environment', 'value': 'dev'}]"
 
