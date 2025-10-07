@@ -157,7 +157,19 @@
   - name: grep for root
     ansible.builtin.command: cat /etc/passwd | grep root
     register: command_output
+    ignore_errors: true
 
   - name: display command_output
     ansible.builtin.debug:
       msg: "{{ command_output }}"
+#retured rc 1
+
+
+  - name: grep for root - shel command
+    ansible.builtin.shell: cat /etc/passwd | grep root
+    register: command_output_shell
+ 
+
+  - name: display command_output-shelll
+    ansible.builtin.debug:
+      msg: "{{ command_output_shell }}"
