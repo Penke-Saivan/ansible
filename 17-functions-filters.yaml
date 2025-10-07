@@ -59,3 +59,45 @@
   - name: convert lists to dicts 
     ansible.builtin.debug:
       msg: "tag map: {{ listTags | items2dict }}"
+
+#  "msg": "tag map: {'Application': 'payment', 'Environment': 'dev'}"     
+
+# Formatting YAML and JSON
+
+# To read a YAML file and store its content in a variable using set_fact and the lookup plugin in Ansible, perform the following steps:
+# Use the lookup plugin to read the file content:
+# The lookup('file', 'path/to/your/file.yaml') expression reads the content of the specified file on the Ansible control node.
+# Use the from_yaml filter to parse the YAML content:
+# The from_yaml filter converts the string content read from the file into a Python dictionary or list, depending on the YAML structure.
+# Use set_fact to store the parsed data in a variable:
+# The ansible.builtin.set_fact module assigns the result of the lookup and parsing to a new variable.
+
+  - name: read yaml and take into a variable
+    ansible.builtin.set_fact:
+      student_yaml: "{{ lookup('file', 'student.yaml') | from_yaml }}"  
+
+  - name: convert yaml to json
+    ansible.builtin.debug:
+      msg: " JSON: {{ student_yaml | to_json  }}" 
+
+# - name: Copy using inline content
+#   ansible.builtin.copy:
+#     content: '# This file was moved to /etc/other.conf'
+#     dest: /etc/mine.conf      
+
+  - name: save student_yaml
+    ansible.builtin.copy:
+      content:  student_yaml 
+      dest: ./student-yaml
+    ignore_errors: true  
+
+
+  - name: save json to file by copying
+    ansible.builtin.copy:
+      content:  "{{ student_yaml | to_json  }}" 
+      dest: ./student-data.json
+
+  - name: save json to file by copying-nice json
+    ansible.builtin.copy:
+      content:  "{{ student_yaml | to_nice_json  }}" 
+      dest: ./nice-student-data.json
